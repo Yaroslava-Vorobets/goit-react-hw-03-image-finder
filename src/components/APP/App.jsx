@@ -1,14 +1,15 @@
 import { Component } from 'react';
-import { GlobalStyle } from './GlobalStyles';
+import { GlobalStyle } from '../GlobalStyles';
 import 'modern-normalize';
-import Searchbar from './SearchbarFolder/Searchbar';
-import { ImageGallery } from './ImageGalleryFolder/ImageGallery';
+import Searchbar from '../SearchbarFolder/Searchbar';
+import { ImageGallery } from '../ImageGalleryFolder/ImageGallery';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import FetchRequestApi from './Servises/Api'
-import { Section } from './APP/App.Styled';
-import {LoadMore } from './ButtonFolder/Button'
-import { Spinner } from './LOADER/Spinner'
+import FetchRequestApi from '../Servises/Api'
+import { Section } from './App.Styled';
+import {LoadMore } from '../ButtonFolder/Button'
+import { Vortex } from 'react-loader-spinner'
+
 
 
 export class App extends Component {
@@ -83,11 +84,11 @@ export class App extends Component {
         {!images &&  toast('Enter a search query!')} 
         {images && <ImageGallery images={images}></ImageGallery> }
         {error &&  <h1>{error.message}</h1>  }
-        {loading && <Spinner />}
+        {loading && <Vortex/>}
         {images.length > 0 && images.length !== totalHits && !loading && (
-          <LoadMore onClick={this.loadMore}/>          
-        )}     
-       
+          <LoadMore onClick={this.loadMore}/> 
+         
+        )}       
         <GlobalStyle />
        <ToastContainer autoClose={2000} />
     </Section>

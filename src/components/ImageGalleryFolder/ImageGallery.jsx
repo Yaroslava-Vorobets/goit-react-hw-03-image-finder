@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import ImageElementItem from '../ImageGalleryItemFolder/ImageGalleryItem'
-import {List} from '../ImageGalleryFolder/ImageGalleryStyled';
+import { List } from '../ImageGalleryFolder/ImageGalleryStyled';
+
 
 export const ImageGallery = ({ images }) => {
   console.log(images);
@@ -8,11 +10,14 @@ export const ImageGallery = ({ images }) => {
       
       {images.map(image =>(
            <ImageElementItem key={image.id} image={image} />             
-            ))}
+            ))}    
     </List>
   );
 };
   
+ImageGallery.propTypes = {
+    images: PropTypes.object.isRequired,
+};
 
 
 

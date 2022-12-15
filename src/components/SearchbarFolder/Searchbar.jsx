@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Component } from "react"
 import { toast } from 'react-toastify';
 import {Section, SearchForm, SearchButton, Span, SearchFormInput} from './Searchbar.Styled';
@@ -54,5 +54,9 @@ export class Searchbar extends Component {
         )
     }
 }
+
+Searchbar.propTypes = {
+  query: PropTypes.string.isRequired,
+};
  
 export default Searchbar;           
