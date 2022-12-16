@@ -66,6 +66,7 @@ export class App extends Component {
     this.setState(prevState => ({       
       page: prevState.page + 1,
       loading: true,
+    
     }))    
     const { page, totalHits } = this.state;
     const amountOfPages = totalHits / 12 - page;
@@ -77,7 +78,7 @@ export class App extends Component {
   
   
   render() {
-  const {images,loading, error,totalHits} = this.state
+  const {images,loading, error,amountOfPages} = this.state
   return(
     <Section>   
       <Searchbar onSubmit={this.handleFormSubmit} isSubmitting= {loading}/>
@@ -85,10 +86,8 @@ export class App extends Component {
         {images && <ImageGallery images={images}></ImageGallery> }
         {error &&  <h1>{error.message}</h1>  }
         {loading && <Vortex/>}
-        {images.length > 0 && images.length !== totalHits && !loading && (
-          <LoadMore onClick={this.loadMore}/> 
-         
-        )}       
+        {images.length > 0 && images.length > amountOfPages &&  (
+          <LoadMore onClick={this.loadMore} />)}       
         <GlobalStyle />
        <ToastContainer autoClose={2000} />
     </Section>
