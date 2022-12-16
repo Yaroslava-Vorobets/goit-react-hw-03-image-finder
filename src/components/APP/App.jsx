@@ -78,7 +78,7 @@ export class App extends Component {
   
   
   render() {
-  const {images,loading, error,amountOfPages} = this.state
+  const {images,loading, error} = this.state
   return(
     <Section>   
       <Searchbar onSubmit={this.handleFormSubmit} isSubmitting= {loading}/>
@@ -86,7 +86,7 @@ export class App extends Component {
         {images && <ImageGallery images={images}></ImageGallery> }
         {error &&  <h1>{error.message}</h1>  }
         {loading && <Vortex/>}
-        {images.length > 0 && images.length > amountOfPages &&  (
+        {images.length > 11 &&  (
           <LoadMore onClick={this.loadMore} />)}       
         <GlobalStyle />
        <ToastContainer autoClose={2000} />
